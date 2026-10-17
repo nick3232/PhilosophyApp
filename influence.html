@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhilosophyApp — Who Influenced Whom?</title>
+  <meta name="description" content="Explore the intellectual connections that shaped ancient Greek and Roman philosophy.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="influence-data.js"></script>
+  <script defer src="influence.js"></script>
+</head>
+<body>
+  <header>
+    <span class="brand">PHILOSOPHYAPP</span>
+    <h1>Who Influenced Whom?</h1>
+    <p>Explore the intellectual connections that shaped ancient Greek and Roman philosophy.</p>
+  </header>
+  <nav class="page-nav" aria-label="Main navigation">
+    <a href="index.html">Timeline</a>
+    <a href="ideas.html">Ideas Explorer</a>
+    <a href="schools.html">Philosophical Schools</a>
+    <a href="influence.html" aria-current="page">Who Influenced Whom?</a>
+  </nav>
+  <main class="network-main">
+    <section class="network-section" aria-labelledby="network-title">
+      <div class="network-heading">
+        <h2 id="network-title" class="question-title">A network of ideas</h2>
+        <button id="network-reset" type="button" class="network-reset">Clear selection</button>
+      </div>
+      <p class="network-intro">Select a philosopher to highlight their connections, or select an arrow to examine the evidence. You can also use the relationship buttons below. Arrows point from influencing philosopher to influenced philosopher.</p>
+      <ul class="network-legend" aria-label="Relationship types">
+        <li><span class="network-line" aria-hidden="true"></span>Direct personal relationship</li>
+        <li><span class="network-line dashed" aria-hidden="true"></span>Significant intellectual influence</li>
+      </ul>
+      <p id="network-scroll-hint" class="schools-note">Earlier → Later · Approximate chronological order, not a date scale. Scroll horizontally to explore the whole diagram; keyboard users can focus this region and use the arrow keys.</p>
+      <div id="network-scroll" class="network-scroll" role="region" aria-label="Philosopher influence network, horizontally scrollable" aria-describedby="network-scroll-hint" tabindex="0">
+        <div id="network-canvas" class="network-canvas"></div>
+      </div>
+      <p class="network-caveat">A selective network, not a complete genealogy of philosophy. Missing arrows do not imply absence of influence. Dates are approximate; Diogenes Laertius preserves later ancient testimony rather than eyewitness accounts.</p>
+    </section>
+    <aside id="network-details" class="network-details" aria-labelledby="network-detail-title" aria-live="polite" aria-atomic="true"></aside>
+    <section class="network-section" aria-labelledby="relationships-title">
+      <h2 id="relationships-title" class="question-title">Explore the relationships</h2>
+      <p class="schools-note">Each button selects the same connection as its arrow in the diagram.</p>
+      <div id="network-relationships" class="network-relationships"></div>
+    </section>
+  </main>
+  <footer>Selected connections · Greek & Roman philosophy</footer>
+  <noscript>Enable JavaScript to explore the philosopher network and its historical evidence.</noscript>
+</body>
+</html>

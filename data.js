@@ -1,0 +1,122 @@
+window.PHILOSOPHERS = [
+  {
+    "name": "Socrates",
+    "birth": -470,
+    "death": -399,
+    "dateNotes": "Birth date approximate",
+    "culture": "Greek",
+    "region": "Athens, Classical Greece",
+    "tradition": "Socratic philosophy",
+    "summary": "Centered philosophy on ethical inquiry and the examined life, using persistent questioning to test definitions and assumptions. He left no writings; much of what is known comes through Plato, Xenophon, and other ancient sources.",
+    "source": "https://www.britannica.com/biography/Socrates",
+    "id": "philosopher-1"
+  },
+  {
+    "name": "Plato",
+    "birth": -428,
+    "death": -347,
+    "dateNotes": "Birth often dated c. 428/427 BCE",
+    "culture": "Greek",
+    "region": "Athens, Classical Greece",
+    "tradition": "Platonism / Academy",
+    "summary": "Student of Socrates and founder of the Academy. His dialogues explore ethics, politics, knowledge, metaphysics, and the theory of Forms, and they became foundational texts in Western philosophy.",
+    "source": "https://www.britannica.com/biography/Plato",
+    "id": "philosopher-2"
+  },
+  {
+    "name": "Diogenes of Sinope",
+    "birth": -404,
+    "death": -323,
+    "dateNotes": "Dates approximate and vary by source",
+    "culture": "Greek",
+    "region": "Sinope / Athens / Corinth, Greek world",
+    "tradition": "Cynicism",
+    "summary": "A leading Cynic who rejected convention, wealth, and social status in favor of radical simplicity and self-sufficiency. Ancient anecdotes portray him using provocative behavior to expose hypocrisy and artificial social values.",
+    "source": "https://www.britannica.com/biography/Diogenes-Greek-philosopher",
+    "id": "philosopher-3"
+  },
+  {
+    "name": "Aristotle",
+    "birth": -384,
+    "death": -322,
+    "dateNotes": "Dates generally accepted",
+    "culture": "Greek",
+    "region": "Stagira / Athens, Classical Greece",
+    "tradition": "Aristotelian / Peripatetic",
+    "summary": "Student of Plato and founder of the Lyceum, Aristotle developed systematic approaches to logic, ethics, politics, metaphysics, biology, and natural philosophy. In ethics he emphasized virtue as a cultivated habit and flourishing as the goal of human life.",
+    "source": "https://www.britannica.com/biography/Aristotle",
+    "id": "philosopher-4"
+  },
+  {
+    "name": "Epicurus",
+    "birth": -341,
+    "death": -270,
+    "dateNotes": "Dates generally accepted",
+    "culture": "Greek",
+    "region": "Samos / Athens, Hellenistic Greek world",
+    "tradition": "Epicureanism",
+    "summary": "Taught that the good life consists in pleasure understood primarily as freedom from bodily pain and mental disturbance. He emphasized modest desires, friendship, rational understanding of nature, and freedom from fear of death and the gods.",
+    "source": "https://www.britannica.com/biography/Epicurus",
+    "id": "philosopher-5"
+  },
+  {
+    "name": "Zeno of Citium",
+    "birth": -334,
+    "death": -262,
+    "dateNotes": "Dates approximate; sources vary by several years",
+    "culture": "Greek",
+    "region": "Citium, Cyprus / Athens, Hellenistic Greek world",
+    "tradition": "Stoicism",
+    "summary": "Founder of Stoicism, teaching in the Stoa Poikile at Athens. He held that the good life depends on virtue and living in accordance with nature and reason, establishing ideas developed by later Greek and Roman Stoics.",
+    "source": "https://www.britannica.com/biography/Zeno-of-Citium",
+    "id": "philosopher-6"
+  },
+  {
+    "name": "Cicero",
+    "birth": -106,
+    "death": -43,
+    "dateNotes": "Dates generally accepted",
+    "culture": "Roman",
+    "region": "Roman Republic",
+    "tradition": "Academic Skepticism / eclectic Roman philosophy",
+    "summary": "Roman statesman, orator, and philosophical writer who transmitted and adapted Greek philosophical debates for a Latin-reading audience. His works examine ethics, politics, duty, religion, friendship, and competing Hellenistic schools.",
+    "source": "https://www.britannica.com/biography/Cicero",
+    "id": "philosopher-7"
+  },
+  {
+    "name": "Seneca",
+    "birth": -4,
+    "death": 65,
+    "dateNotes": "Birth conventionally c. 4 BCE",
+    "culture": "Roman",
+    "region": "Roman Empire; born in Corduba, active in Rome",
+    "tradition": "Roman Stoicism",
+    "summary": "Roman Stoic writer and statesman whose essays and letters focus on applying philosophy to everyday life. He emphasized virtue, the disciplined use of reason, management of destructive emotions, mortality, and the wise use of time.",
+    "source": "https://www.britannica.com/biography/Lucius-Annaeus-Seneca-Roman-philosopher-and-statesman",
+    "id": "philosopher-8"
+  },
+  {
+    "name": "Epictetus",
+    "birth": 55,
+    "death": 135,
+    "dateNotes": "Both dates approximate",
+    "culture": "Greek (Roman-era)",
+    "region": "Roman Empire; born in Hierapolis, later taught at Nicopolis",
+    "tradition": "Roman Stoicism",
+    "summary": "Formerly enslaved Stoic teacher who emphasized distinguishing what is within our control from what is not. His teachings, recorded by Arrian, focus on judgment, character, self-discipline, and aligning one's will with the order of nature.",
+    "source": "https://www.britannica.com/biography/Epictetus-Greek-philosopher",
+    "id": "philosopher-9"
+  },
+  {
+    "name": "Marcus Aurelius",
+    "birth": 121,
+    "death": 180,
+    "dateNotes": "Dates generally accepted",
+    "culture": "Roman",
+    "region": "Roman Empire",
+    "tradition": "Roman Stoicism",
+    "summary": "Roman emperor and Stoic practitioner whose Meditations records exercises in self-discipline, perspective, duty, and acceptance of events beyond one's control. He stresses rational conduct, service to others, impermanence, and living according to nature.",
+    "source": "https://www.britannica.com/biography/Marcus-Aurelius-Roman-emperor",
+    "id": "philosopher-10"
+  }
+];

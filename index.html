@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhilosophyApp — Greek & Roman Timeline</title>
+  <meta name="description" content="Explore the overlapping lives and ideas of ten Greek and Roman philosophers.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <header><span class="brand">PHILOSOPHYAPP</span><h1>Lives across time</h1><p>Greek & Roman philosophy <span class="separator">/</span> 500 BCE–200 CE</p></header>
+  <nav class="page-nav" aria-label="Main navigation">
+    <a href="index.html" aria-current="page">Timeline</a>
+    <a href="ideas.html">Ideas Explorer</a>
+    <a href="schools.html">Philosophical Schools</a>
+    <a href="influence.html">Who Influenced Whom?</a>
+  </nav>
+  <main>
+    <section class="timeline-card" aria-labelledby="timeline-title">
+      <div class="section-heading"><h2 id="timeline-title">Ten philosophers, one timeline</h2><span>Choose a lifespan to explore</span></div>
+      <div class="scroll-hint">Scroll horizontally to explore the full timeline on smaller screens.</div>
+      <div class="timeline-scroll" tabindex="0" role="region" aria-label="Philosopher timeline, horizontally scrollable">
+        <div id="timeline" class="timeline"></div>
+      </div>
+      <ul class="timeline-legend" aria-label="Timeline color legend">
+        <li><span class="legend-swatch greek" aria-hidden="true"></span>Greek (including Roman-era Greeks)</li>
+        <li><span class="legend-swatch roman" aria-hidden="true"></span>Roman</li>
+      </ul>
+      <p class="timeline-note">Bars show lifespans. Historical dates may be approximate; see each philosopher’s date notes.</p>
+    </section>
+    <aside id="details" class="details" aria-labelledby="detail-name" aria-live="polite"></aside>
+  </main>
+  <footer>Initial collection · 10 Greek & Roman philosophers</footer>
+  <noscript>Enable JavaScript to view the interactive timeline.</noscript>
+</body>
+</html>
