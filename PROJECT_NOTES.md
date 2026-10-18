@@ -22,6 +22,11 @@ The application is a static, browser-based site using plain HTML, CSS, and JavaS
 | `influence.html` | Influence network shell, legend, selection panel, and relationship list. |
 | `influence.js` | SVG arrows, philosopher buttons, highlighting, and evidence rendering. |
 | `influence-data.js` | Network roster, two additional biographies, layout, and sourced relationships. |
+| `quiz.html` | Quiz page shell and centered question/results card. |
+| `quiz-data.js` | Twenty questions in `window.PHILOSOPHY_QUIZ_QUESTIONS`. |
+| `quiz-state.js` | DOM-independent session factory, `window.createPhilosophyQuiz`. |
+| `quiz.js` | Question rendering, immediate feedback, results, and expandable review. |
+| `tests/quiz-state.test.cjs` | Optional Node.js built-in tests for quiz content structure and session transitions. |
 | `data.js` | Shared philosopher records, exposed as `window.PHILOSOPHERS`. |
 | `ideas-data.js` | Questions and answers, exposed as `window.PHILOSOPHICAL_QUESTIONS`. |
 | `styles.css` | Shared theme and all page-specific styles and responsive rules. |
@@ -41,7 +46,7 @@ Each HTML page loads its data scripts before its behavior script using ordered `
 - Shared CSS custom properties define colors and typography. Layout uses Grid and Flexbox, with media queries at 1100px and 650px. Explorer rules override the general timeline-oriented `main` layout.
 - Accessibility patterns include native buttons, visible keyboard focus, `aria-pressed` selection, labeled regions, live results, and JavaScript-disabled notices. Timeline detail scrolling respects reduced-motion preferences.
 
-There is no automated test suite, lint configuration, or documented test command. Verification to date has used browser checks: confirm all question/card combinations, Enter/Space activation, active states, navigation, timeline selection, desktop/mobile layout, overflow, and browser console errors. These are manual checks, not an automated regression guarantee.
+Quiz tests use Node.js's built-in runner: `node --test tests/quiz-state.test.cjs`. They load the browser globals through a VM context without a DOM or dependencies. Coverage includes bank structure, distinct random sampling, locked answers, blocked invalid transitions, scores of 0/10, 6/10 and 10/10, completion, and restart. Node.js is optional development tooling; the app still runs directly in a browser. No lint configuration or build step is present. Browser checks cover rendering, keyboard interaction, navigation, desktop/mobile layout, overflow, and console errors; the older pages do not have automated tests.
 
 ## Current pages
 
@@ -53,6 +58,12 @@ There is no automated test suite, lint configuration, or documented test command
 
 ## Architectural decisions and open questions
 
+**Philosophy Quiz:** `quiz.html` loads `quiz-data.js`, `quiz-state.js`, then `quiz.js`. Question records have unique `id`, display `category`, `question`, four `options` with stable `id` and `text`, `correctAnswerId`, and `explanation`. The bank uses the existing pages' introductory content, with a 6/7/7 category split. These are self-contained educational prompts, so no unused shared biography scripts are loaded. To expand the bank, append records with distinct IDs and valid option references; the core UI remains unchanged. Update the bank-size wording in the page and README if the total changes.
+
+The session factory owns selected questions, index, recorded answers, correct count, answered flag, and completion flag. Fisher–Yates shuffles a copy of the bank and takes 10 questions without replacement; the supplied random function defaults to `Math.random` and can be seeded in tests. Starting another quiz resets all state and reshuffles; no guarantee of disjoint consecutive sessions is made. Answer and Next transitions reject invalid, repeated, or out-of-order actions. State snapshots copy the selection array and answer records.
+
+Rendering stays separate from the model. Answer feedback updates the existing controls, uses text labels alongside color, and announces through a status region. Submitted options use `aria-disabled` plus the model guard, keeping keyboard focus stable while preventing changes. Next is natively disabled until submission; advancing or restarting focuses the new heading. Results derive the percentage from recorded correct answers and render all session answers in native expandable `details` elements. No persistence, external services, or libraries were introduced. Automated model tests complement browser checks; extending the bank does not require changing the session length or rendering code.
+
 **Who Influenced Whom?:** `influence.html` loads `data.js`, `influence-data.js`, and `influence.js`. `window.PHILOSOPHY_NETWORK` holds `additionalPhilosophers`, `layout`, and `relationships`. Nine existing biographies are reused; Cleanthes and Chrysippus are defined only in the new data file and are not added to the timeline. Relationships use stable `id`, `source` and `target` philosopher IDs, `category` (`direct` or `intellectual`), `explanation`, `reference`, and source `url`. Direction always runs from influencing to influenced philosopher.
 
 The network uses native SVG paths and arrowhead markers behind absolutely positioned HTML philosopher buttons, without a visualization dependency. Layout coordinates, dimensions, and optional long-arrow routes are separate from historical relationship records. Positioning is approximately chronological, not a proportional date scale. Explicit routes keep long arrows away from labels; adding nodes may require layout adjustments, though rendering and selection logic remain data-driven. Runtime checks catch invalid node references and relationship categories.
@@ -61,7 +72,7 @@ All arrow paths have broad pointer targets, keyboard activation, and a matching 
 
 Future integration could link shared philosopher IDs to timeline entries, reuse relationship records, or connect source references to a Primary Sources Library. These are possibilities only; school filtering and extra integration are not implemented.
 
-Network verification covered all 11 node selections and 11 relationship buttons, highlighting and source display, arrow clicking and keyboard activation, reset, evidence-panel focus, horizontal scrolling, and phone-width overflow. Regression checks covered timeline selection, all Explorer questions, and Schools filtering. Static checks verified local file references, active navigation, unique HTML IDs, network references, relationship counts, and forward arrow directions. There is still no automated test suite.
+Network verification covered all 11 node selections and 11 relationship buttons, highlighting and source display, arrow clicking and keyboard activation, reset, evidence-panel focus, horizontal scrolling, and phone-width overflow. Regression checks covered timeline selection, all Explorer questions, and Schools filtering. Static checks verified local file references, active navigation, unique HTML IDs, network references, relationship counts, and forward arrow directions. The network currently relies on browser and static checks rather than automated tests.
 
 - The static implementation supports the README's stated ability to run locally without installation or a build step and to use static hosting.
 - Separating question content from rendering allows expansion without rewriting the layout. Shared IDs avoid duplicating philosopher names and provide a basis for future links; card-to-timeline links are not currently implemented.

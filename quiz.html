@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhilosophyApp — Philosophy Quiz</title>
+  <meta name="description" content="Test your knowledge of ancient philosophers, philosophical schools, and the ideas that shaped Western thought.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="quiz-data.js"></script>
+  <script defer src="quiz-state.js"></script>
+  <script defer src="quiz.js"></script>
+</head>
+<body>
+  <header>
+    <span class="brand">PHILOSOPHYAPP</span>
+    <h1>Philosophy Quiz</h1>
+    <p>Test your knowledge of ancient philosophers, philosophical schools, and the ideas that shaped Western thought.</p>
+  </header>
+  <nav class="page-nav" aria-label="Main navigation">
+    <a href="index.html">Timeline</a>
+    <a href="ideas.html">Ideas Explorer</a>
+    <a href="schools.html">Philosophical Schools</a>
+    <a href="influence.html">Who Influenced Whom?</a>
+    <a href="quiz.html" aria-current="page">Philosophy Quiz</a>
+  </nav>
+  <main class="quiz-main">
+    <div class="quiz-container">
+      <p class="schools-note">10 questions, randomly drawn from a bank of 20. Choose an answer to see its explanation, then continue at your own pace.</p>
+      <section id="quiz-card" class="quiz-card" aria-labelledby="quiz-question"></section>
+    </div>
+  </main>
+  <footer>Practice & reflection · Greek & Roman philosophy</footer>
+  <noscript>Enable JavaScript to take the philosophy quiz.</noscript>
+</body>
+</html>
