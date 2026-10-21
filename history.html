@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhilosophyApp — Historical Context</title>
+  <meta name="description" content="Discover the events that shaped the Greek and Roman worlds and explore how they intersected with the lives of ancient philosophers.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="history-data.js"></script>
+  <script defer src="history-time.js"></script>
+  <script defer src="history.js"></script>
+</head>
+<body>
+  <header>
+    <span class="brand">PHILOSOPHYAPP</span>
+    <h1>Historical Context</h1>
+    <p>Discover the events that shaped the Greek and Roman worlds and explore how they intersected with the lives of ancient philosophers.</p>
+  </header>
+  <nav class="page-nav" aria-label="Main navigation">
+    <a href="index.html">Timeline</a>
+    <a href="ideas.html">Ideas Explorer</a>
+    <a href="schools.html">Philosophical Schools</a>
+    <a href="influence.html">Who Influenced Whom?</a>
+    <a href="quiz.html">Philosophy Quiz</a>
+    <a href="history.html" aria-current="page">Historical Context</a>
+  </nav>
+  <main class="history-main">
+    <section class="history-intro" aria-label="About this timeline">
+      <p>Philosophy developed within societies experiencing wars, political transformations, cultural expansion, and changing institutions. This timeline places philosophers alongside major historical events to help illustrate the world in which their ideas emerged.</p>
+      <p class="schools-note">Select a name, lifespan bar, or event marker to explore its contemporaries. Overlap is calculated by year; it does not establish that a philosopher witnessed an event or that the event directly shaped their teaching.</p>
+    </section>
+    <div class="history-controls">
+      <fieldset>
+        <legend>Historical event categories</legend>
+        <div class="history-filters">
+          <label><input type="checkbox" value="political-military" checked>Political and military events</label>
+          <label><input type="checkbox" value="cultural-social" checked>Cultural and social developments</label>
+          <label><input type="checkbox" value="philosophical" checked>Philosophical milestones</label>
+        </div>
+      </fieldset>
+      <button id="history-reset" class="network-reset" type="button">Clear selection</button>
+    </div>
+    <section class="history-timeline-card" aria-labelledby="history-timeline-title">
+      <h2 id="history-timeline-title" class="question-title">Lives and events on one scale</h2>
+      <p id="history-range" class="schools-note"></p>
+      <ul class="history-legend" aria-label="Timeline symbols">
+        <li><span class="history-swatch" aria-hidden="true"></span>Philosopher lifespan</li>
+        <li><span class="history-swatch event" aria-hidden="true"></span>Event period</li>
+        <li><span class="history-diamond" aria-hidden="true"></span>Event year</li>
+      </ul>
+      <p id="history-scroll-hint" class="schools-note">Scroll horizontally to explore the full scale. Both sections move together; names remain visible. Use the arrow keys when the timeline region is focused. “c.” marks an approximate event date.</p>
+      <p id="history-filter-status" class="schools-note" role="status"></p>
+      <div id="history-scroll" class="history-scroll" role="region" aria-label="Combined philosopher and historical event timeline, horizontally scrollable" aria-describedby="history-scroll-hint" tabindex="0">
+        <div id="history-timeline" class="history-timeline"></div>
+      </div>
+    </section>
+    <aside id="history-details" class="history-details" aria-labelledby="history-detail-title" aria-live="polite" aria-atomic="true"></aside>
+  </main>
+  <footer>Shared chronology · Greek & Roman philosophy</footer>
+  <noscript>Enable JavaScript to explore historical events and philosopher lifetimes.</noscript>
+</body>
+</html>
