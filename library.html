@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhilosophyApp — Primary Sources Library</title>
+  <meta name="description" content="Explore selected passages from ancient philosophy with source references, search, and filters.">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="data.js"></script>
+  <script defer src="library-data.js"></script>
+  <script defer src="library-filter.js"></script>
+  <script defer src="library.js"></script>
+</head>
+<body>
+  <header>
+    <span class="brand">PHILOSOPHYAPP</span>
+    <h1>Primary Sources Library</h1>
+    <p>Explore the writings of ancient philosophers and discover the ideas that shaped classical thought.</p>
+  </header>
+  <nav class="page-nav" aria-label="Main navigation">
+    <a href="index.html">Timeline</a>
+    <a href="ideas.html">Ideas Explorer</a>
+    <a href="schools.html">Philosophical Schools</a>
+    <a href="influence.html">Who Influenced Whom?</a>
+    <a href="quiz.html">Philosophy Quiz</a>
+    <a href="history.html">Historical Context</a>
+    <a href="library.html" aria-current="page">Primary Sources Library</a>
+  </nav>
+  <main class="library-main">
+    <section class="library-intro" aria-label="About the library">
+      <p>Primary sources let us encounter philosophical ideas through surviving ancient texts, often read today in translation. Socrates left no known writings of his own: here, he appears as a speaker in works by Plato. Arrian recorded and compiled the teachings of Epictetus.</p>
+      <p class="schools-note">Start with a brief excerpt, then explore its source and context. These public-domain English translations retain historical wording; some excerpts are sentence fragments. The introductory context is separate from the ancient text.</p>
+    </section>
+    <section class="library-controls" aria-label="Search and filter passages">
+      <div class="library-search">
+        <label for="library-search">Search the library</label>
+        <div class="library-search-row">
+          <input type="search" id="library-search" placeholder="Try virtue, Plato, or friendship" aria-describedby="library-search-hint" autocomplete="off">
+          <button type="button" id="library-clear-search">Clear Search</button>
+        </div>
+        <p id="library-search-hint" class="schools-note">Search authors, works, topics, descriptions, and passage text. Search and both filters apply together.</p>
+      </div>
+      <div class="library-filter-row">
+        <div><label for="library-author">Philosopher / author</label><select id="library-author"><option value="">All Philosophers</option></select></div>
+        <div><label for="library-topic">Philosophical topic</label><select id="library-topic"><option value="">All Topics</option></select></div>
+        <button type="button" id="library-reset">Clear Filters</button>
+      </div>
+    </section>
+    <section aria-labelledby="library-heading">
+      <div class="library-results-heading"><h2 id="library-heading" class="question-title">Selected passages</h2><p id="library-status" role="status"></p></div>
+      <p id="library-empty" class="library-empty" hidden>No passages match your search and filters. Try a shorter search, choose All Philosophers or All Topics, or use Clear Filters to restore the library.</p>
+      <div id="library-cards" class="library-cards"></div>
+    </section>
+    <p class="schools-note library-source-note">All passages and context are stored locally. Optional source links open the cited transcriptions and require internet access. References identify sections of the ancient works; the library offers short selections rather than complete arguments.</p>
+  </main>
+  <footer>Selected ancient texts · Greek &amp; Roman philosophy</footer>
+  <noscript>Enable JavaScript to read and search the locally stored passages.</noscript>
+</body>
+</html>

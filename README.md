@@ -2,9 +2,11 @@
 
 Open `index.html` in any modern browser. No server, installation, internet connection, or build step is required. Britannica links require internet access.
 
-Keep the six HTML pages (`index.html`, `ideas.html`, `schools.html`, `influence.html`, `quiz.html`, `history.html`), `styles.css`, and all root-level JavaScript files together. These files can also be uploaded to any static web host.
+Keep the seven HTML pages (`index.html`, `ideas.html`, `schools.html`, `influence.html`, `quiz.html`, `history.html`, `library.html`), `styles.css`, and all root-level JavaScript files together. These files can also be uploaded to any static web host.
 
-Use the navigation to switch between the timeline, Philosophical Ideas Explorer (`ideas.html`), Philosophical Schools (`schools.html`), Who Influenced Whom? (`influence.html`), Philosophy Quiz (`quiz.html`), and Historical Context (`history.html`). The Explorer starts with “What makes a good life?”; select a question to compare its three philosopher perspectives. Question buttons support keyboard Tab navigation and Enter or Space activation.
+Use the navigation to switch between the timeline, Philosophical Ideas Explorer (`ideas.html`), Philosophical Schools (`schools.html`), Who Influenced Whom? (`influence.html`), Philosophy Quiz (`quiz.html`), Historical Context (`history.html`), and Primary Sources Library (`library.html`). The Explorer starts with “What makes a good life?”; select a question to compare its three philosopher perspectives. Question buttons support keyboard Tab navigation and Enter or Space activation.
+
+Primary Sources Library offers 15 brief excerpts from Plato, Aristotle, Epicurus, Epictetus, Seneca, Marcus Aurelius, and Cicero. Search authors, works, topics, descriptions, and passage text as you type; combine philosopher and topic filters to narrow the collection. Read Passage expands the quotation, attribution, translation details, and introductory context. Multiple cards can remain open. Clear Search preserves the filters; Clear Filters restores all passages. Reading works offline; optional source transcription links require internet access.
 
 Historical Context places the 10 philosophers alongside 18 historical events on a shared 510 BCE–200 CE scale. Choose a lifespan or event to highlight chronological overlaps and read a short explanation. Three independent category filters control historical events while philosopher lifetimes remain visible. Clear selection preserves the category settings. Both sections scroll horizontally together on smaller screens; names stay visible. On narrow screens, selecting an item brings its information panel into view. Overlap means contemporaneity, not evidence of personal involvement or direct influence.
 
@@ -20,4 +22,4 @@ The ten records in `data.js` were taken from the Greek and Roman philosophy spre
 
 Click or keyboard-focus a lifespan bar and press Enter or Space to read its details. On phone screens, the timeline fits the screen with names above each bar and three date markers. Tap any row to select a philosopher. On intermediate screens, scroll horizontally; the name column stays visible.
 
-Optional developer checks: with Node.js installed, run `node --test tests/*.test.cjs` from the project root for quiz and historical-date tests. Node.js is not required to use the application.
+Optional developer checks: with Node.js installed, run `node --test tests/*.test.cjs` from the project root for quiz, historical-date, and library tests. Node.js is not required to use the application.

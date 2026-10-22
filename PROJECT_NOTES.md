@@ -32,6 +32,11 @@ The application is a static, browser-based site using plain HTML, CSS, and JavaS
 | `history-time.js` | Pure historical-date, shared-scale, overlap, and filtered selection helpers in `window.HISTORY_TIME`. |
 | `history.js` | Both timeline sections, event filtering, highlighting, and detail rendering. |
 | `tests/history-time.test.cjs` | Date boundaries, scale geometry, event integrity, overlap, and filter/selection tests. |
+| `library.html` | Primary Sources Library shell, search/filter controls, and reading-card region. |
+| `library-data.js` | Fifteen locally stored, attributed excerpts in `window.PRIMARY_SOURCES`. |
+| `library-filter.js` | Pure search indexing, combined matching, and dataset-derived choices in `window.LIBRARY_FILTER`. |
+| `library.js` | Reading cards, native disclosure controls, filtering, counts, and reset behavior. |
+| `tests/library.test.cjs` | Content integrity, search fields, combined filters, and dataset-driven expansion checks. |
 | `data.js` | Shared philosopher records, exposed as `window.PHILOSOPHERS`. |
 | `ideas-data.js` | Questions and answers, exposed as `window.PHILOSOPHICAL_QUESTIONS`. |
 | `styles.css` | Shared theme and all page-specific styles and responsive rules. |
@@ -51,7 +56,7 @@ Each HTML page loads its data scripts before its behavior script using ordered `
 - Shared CSS custom properties define colors and typography. Layout uses Grid and Flexbox, with media queries at 1100px and 650px. Explorer rules override the general timeline-oriented `main` layout.
 - Accessibility patterns include native buttons, visible keyboard focus, `aria-pressed` selection, labeled regions, live results, and JavaScript-disabled notices. Timeline detail scrolling respects reduced-motion preferences.
 
-Tests use Node.js's built-in runner: `node --test tests/*.test.cjs`. They load browser globals through VM contexts without a DOM or dependencies. Quiz coverage includes bank structure, distinct random sampling, locked answers, invalid transitions, scoring, completion, and restart. Historical Context coverage includes era conversion, date formatting, shared-scale geometry, inclusive overlap, all eight filter combinations, and selection changes. Node.js is optional development tooling; the app still runs directly in a browser. No lint configuration or build step is present. Browser checks cover rendering, keyboard interaction, navigation, desktop/mobile layout, overflow, and console errors; the other pages do not have automated tests.
+Tests use Node.js's built-in runner: `node --test tests/*.test.cjs`. They load browser globals through VM contexts without a DOM or dependencies. Quiz coverage includes bank structure, distinct random sampling, locked answers, invalid transitions, scoring, completion, and restart. Historical Context coverage includes era conversion, date formatting, shared-scale geometry, inclusive overlap, all eight filter combinations, and selection changes. Library coverage is described below. Node.js is optional development tooling; the app still runs directly in a browser. No lint configuration or build step is present. Browser checks cover rendering, keyboard interaction, navigation, desktop/mobile layout, overflow, and console errors; the other pages do not have automated tests.
 
 ## Current pages
 
@@ -62,6 +67,18 @@ Tests use Node.js's built-in runner: `node --test tests/*.test.cjs`. They load b
 **Philosophical Schools:** `schools.html` loads `data.js`, `schools-data.js`, and `schools.js`, sharing the existing stylesheet and navigation pattern. School records have stable descriptive IDs, `name`, `founding` (display text), `philosopherIds`, `centralIdea`, `happiness`, `virtue`, `knowledge`, and `emphasis`. A `Map` resolves principal figures from shared philosopher records. Overview cards use an adaptive CSS grid. A local `Set` tracks selected schools, initially all five; native checkboxes and a category dropdown rebuild a semantic table with column and row headers. No selection hides the table and shows a friendly status message. Filters leave controls and focus intact and reset on page load.
 
 ## Architectural decisions and open questions
+
+**Primary Sources Library:** `library.html` loads `data.js`, `library-data.js`, `library-filter.js`, then `library.js`. Records contain a stable descriptive `id`, shared `philosopherId` (the author/teacher, not the dialogue speaker), `work`, one broad primary `topic`, `description`, verbatim `passage`, precise ancient `reference`, `translator`, `edition`, `sourceUrl`, separate introductory `context`, and optional-text `attribution`. The seven author choices and six topics derive from actual records. No uncertain composition dates are displayed.
+
+A pure index resolves names from shared biographies and performs trimmed, case-insensitive substring matching across author, work, topic, description, quotation, and attribution. Author and topic filters combine with the query using AND. Cards and controls are retained while visibility changes, preserving open passages and focus. Native `details`/`summary` provide keyboard disclosure and expanded state; a bottom Close Passage button returns focus to the summary. Multiple cards can stay open. Clear Search preserves dropdowns; Clear Filters clears query and both dropdowns. Nothing is persisted or fetched at runtime.
+
+**Library editorial decisions:** All 15 excerpts were checked against the linked English transcriptions on 22 October 2026. Brief fragments are identified as excerpts and retain original wording; introductory context is outside the blockquote. Plato is the author and Socrates the represented speaker. Epictetus is the teacher, with Arrian identified as recorder/compiler. Epicurus’s letter and doctrines survive in Diogenes Laertius, Book X. Public-domain status is stated for the United States, not assumed worldwide (notably Ross’s 1925 translation).
+
+Translation sources are Jowett (Plato and Politics), Ross (Nicomachean Ethics, first published 1925), Hicks (Epicurus, 1925), Long (Epictetus, 1877; Marcus Aurelius, the cited 1889 printing), Gummere (Seneca letters, cited 1925 reprint), Stewart (Seneca dialogues, 1889), and Miller (Cicero, 1913). Internet Classics Archive does not identify specific printings for Jowett/Ross; those records say so rather than assign an invented edition. Bibliographical checks used the corresponding Wikisource title pages, including [Ross](https://en.wikisource.org/wiki/Nicomachean_Ethics_(Ross)), [Gummere](https://en.wikisource.org/wiki/Moral_letters_to_Lucilius), and [Long’s Marcus Aurelius](https://en.wikisource.org/wiki/The_Thoughts_of_the_Emperor_Marcus_Aurelius_Antoninus). Online transcriptions can contain errors; source scans and critical editions remain useful editorial follow-up. No modern revised translations are silently substituted.
+
+To add an excerpt, verify wording, ancient reference, authorship, translation rights, and bibliographic details first; then append a record with a unique ID and a valid shared author ID. Use an existing broad topic where suitable and keep context to 2–4 sentences. Search, choices, counts, and rendering require no changes. Preserve paragraph breaks with double newlines when needed. Update the displayed collection count in README and the integrity test if the curated collection changes. Optional source links are reader-initiated external navigation; there are no automatic links to other application pages or text retrieval services.
+
+Library tests cover required metadata, unique IDs, author references, all intended search fields, case/partial matching, independent and combined filters, no results/reset inputs, nonmutating filtering, and adding data without renderer changes. Browser checks complement these pure tests for disclosures, focus, responsive layout, navigation, and regression behavior.
 
 **Historical Context:** `history.html` loads shared `data.js`, then `history-data.js`, `history-time.js`, and `history.js`. It reuses the ten timeline biographies and their IDs without changing the original timeline. Event records have `id`, `name`, `start`, `end`, `approximate`, `category`, `description`, and editorial `source` metadata; optional `displayDate`, `dateNotes`, and `additionalSource` handle qualifications. Sources remain in data for maintenance; no external links or requests are added to this page. New events need no renderer changes unless a new category is introduced.
 
@@ -99,7 +116,7 @@ Schools verification extends the manual browser checks to all five overview reco
 
 ## Future development considerations — tentative
 
-Add approximately 3–5 small educational pages, using each to explore a different philosophical topic and software development technique. Make minor cleanup and consistency improvements as pages are added. After several additional pages, review opportunities to consolidate shared functionality and reduce duplication. Subsequently expand and refine the educational content. These are tentative plans, not committed requirements or a decision to adopt a framework.
+The seven-page initial development phase is complete with the Primary Sources Library. The next tentative phase is an architectural review and revision: examine duplicated navigation/DOM helpers, stylesheet organization, shared content structures, and opportunities to consolidate functionality. Subsequently expand and refine educational content, including source-scan review and fuller excerpts where useful. This is a direction for review, not a commitment to adopt a framework or to add more initial-phase pages.
 
 ## Documentation maintenance
 
